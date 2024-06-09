@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DataTableModule } from './datos-tabla/DataTable.module';
+import { ChartViewerModule } from './datos-grafico/ChartViewer.module';
+import {  provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { NavBarModule } from './nav-bar/nav-bar.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DataTableModule,
+    ChartViewerModule,
+    NavBarModule
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
