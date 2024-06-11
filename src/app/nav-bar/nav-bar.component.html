@@ -1,18 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Goleadores La Liga</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" >
-          <a class="nav-link" [routerLink]="['/datos']" routerLinkActive="active" aria-current="page">Datos</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" [routerLink]="['/graficos']" routerLinkActive="active" >Gráficos</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+ <mat-toolbar>
+      <span mat-button  routerLink="/">La Liga 2023-2024</span>
+      <mat-list class="d-ruby">
+        <mat-list-item class="data-item"  [routerLink]="['/datatable']" routerLinkActive="active"> Data</mat-list-item>
+        <mat-list-item class="mr-2 ml-2 p-0 stats-item" [routerLink]="['/charts']" routerLinkActive="active" > Stats </mat-list-item>
+      </mat-list>
+      <div class="theme-control">
+
+        <mat-slide-toggle (ngModelChange)="onChange($event)"  [(ngModel)]="isDarkThemeActive">
+        </mat-slide-toggle>
+            @if (isDarkThemeActive){
+              <mat-icon>bedtime</mat-icon>
+            } @else {
+              <mat-icon>brightness_5</mat-icon>
+            }
+      </div>
+</mat-toolbar>
+

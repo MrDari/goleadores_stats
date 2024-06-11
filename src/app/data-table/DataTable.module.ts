@@ -7,6 +7,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarModule } from '../nav-bar/nav-bar.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [DataTableComponent],
@@ -17,7 +20,10 @@ import { NavBarModule } from '../nav-bar/nav-bar.module';
     MatPaginatorModule,
     MatInputModule,
     BrowserAnimationsModule,
-    NavBarModule
+    NavBarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSortModule
   ],
 
 })

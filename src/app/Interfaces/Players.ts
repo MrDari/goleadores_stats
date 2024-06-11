@@ -95,3 +95,12 @@ export interface PlayerData {
   player: Player;
   statistics: Statistics[];
 }
+
+export interface PlayerResponse {
+  photo?: string;
+  name: string;
+  lastName?: string;
+  team?: string;
+  goals?: number;
+  yellow?: number;
+}

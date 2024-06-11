@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService} from '../services/Data.service';
 import { Chart } from 'angular-highcharts';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-chart-viewer',
@@ -10,19 +11,15 @@ import { Chart } from 'angular-highcharts';
 export class ChartViewerComponent {
  pieChart : Chart
  barChart: Chart;
-  constructor (private dService: DataService){
+  constructor (private dService: DataService, public themeService: ThemeService ){
   }
 
-
   ngOnInit(){
-    this.dService.obtenerStatsAsist().subscribe( (users : any []) => {
-      console.log(users)
+    this.dService.GetAsistStats().subscribe( (users : any []) => {
       this.pieChart=new Chart({
         chart: {
           type: 'pie',
         },
-
-
         plotOptions: {
           pie: {
             dataLabels: {
@@ -33,7 +30,7 @@ export class ChartViewerComponent {
         },
 
         title: {
-            text: 'Top 5 jugadores con más Asistencias'
+            text: 'Top 5 Players with the Most Assists'
          },
 
         legend: {
@@ -47,16 +44,15 @@ export class ChartViewerComponent {
           },
         ],
       })
-      console.log(this.pieChart)
     }
     )
-    this.dService.obtenerStatsYellow().subscribe( (users : any []) => {
+    this.dService.GetYellowtStats().subscribe( (users : any []) => {
     this.barChart=new Chart({
       chart: {
         type: 'column',
       },
       title: {
-        text: 'Top 5 de Jugadores con más Tarjetas Amarillas'
+        text: 'Top 5 Players with the Most Yellow Cards'
        },
 
        xAxis: {
@@ -64,19 +60,18 @@ export class ChartViewerComponent {
       },
       yAxis: {
         title: {
-          text: 'Tarjetas Amarillas'
+          text: 'Yellow Cards'
         }
       },
       series: [
         {
           type: 'column',
-          name: "Tarjetas Amarillas",
+          name: "Yellow Cards",
           data: users.map(x => x.yellow)
         },
       ],
     })
   })
-    console.log(this.pieChart)
   }
 }
 
